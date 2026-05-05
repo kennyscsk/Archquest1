@@ -17,7 +17,21 @@
     <script>
         // Datos de las preguntas (puedes personalizarlas aquí)
         const questions = [
-            {
+           // {
+              //  question: 
+                
+               // `Your company needs to migrate their API.
+               //<br><br>
+              // They need to keep the old version available and deployable, 
+              // while allowing new customers to try the new API.
+              // <br><br>
+               //<strong>What should they do?</strong>`,
+                //image: "images/pregunta22.png", // ← campo opcional
+              //  options: ["Configure a new load balancer for the new version of the API", "Reconfigure old clients to use a new endpoint for the new API", "Have the old API forward traffic to the new API based on the path ", "Use separate backend pools for each API path behind the load balancer"],
+               // correct: ["Use separate backend pools for each API path behind the load balancer"],
+               // explanation: "is the answer because HTTP(S) load balancer can directis the answer because HTTP(S) load balancer can direct traffic reaching a single IP to different backends based on the incoming URL. A is not correct because configuring a new load balancer would require a new or different SSL and DNS records which conflicts with the requirements to keep the same SSL and DNS records."
+           // },
+             {
                 question: " Your company has decided to make a major revision of their API in order to create better experiences for their developers. They need to keep the old version of the API available and deployable, while allowing new customers and testers to try out the new API. They want to keep the same SSL and DNS records in place to serve both APIs. What should they do?",
                 options: ["Configure a new load balancer for the new version of the API", "Reconfigure old clients to use a new endpoint for the new API", "Have the old API forward traffic to the new API based on the path ", "Use separate backend pools for each API path behind the load balancer"],
                 correct: ["Use separate backend pools for each API path behind the load balancer"],
@@ -34,6 +48,14 @@
                 options: ["A. Port the application code to run on Google App Engine", "B. Integrate Cloud Dataflow into the application to capture real-time metrics", "C. Instrument the application with a monitoring tool like Stackdriver Debugger", "D. Select an automation framework to reliably provision the cloud infrastructure","E. Deploy a continuous integration tool with automated testing in a staging environment","F. Migrate from MySQL to a managed NoSQL database like Google Cloud Datastore or Bigtable"],
                 correct: ["C. Instrument the application with a monitoring tool like Stackdriver Debugger", "D. Select an automation framework to reliably provision the cloud infrastructure","E. Deploy a continuous integration tool with automated testing in a staging environment"],
                 explanation: "Using an automation framework for infrastructure provisioning (Infrastructure as Code - IaC) is a fundamental cloud best practice. Tools like Terraform or Google Cloud Deployment Manager allow you to define your infrastructure in code. This ensures that environments are created reliably, consistently, and repeatably, which drastically reduces manual errors and simplifies management."
+            },
+        
+            {
+                question: "A news feed web services has the following code running on googleapp engine. During peak load, users report that they can see news articles they already viewed. What is the most likely cause of this problem?",
+                image: "images/pregunta4.png",
+                options: ["A. The session variable is local to just a single instance", "B. The session variable is being overwritten in Cloud Datastore", "C. The URL of the API needs to be modified to prevent caching", "D. The HTTP Expires header needs to be set to -1 stop caching"],
+                correct: ["A. The session variable is local to just a single instance"],
+                explanation: "Enfoque consultivo: primero levantar necesidades (volumen, retención, búsqueda/analytics, alertas, trazabilidad, costos, cumplimiento, integraciones), luego comparar opciones (Cloud Logging, ELK/OpenSearch, Datadog, Splunk, Sentry, etc.) con PoC."
             },
             {
                 question: "An application development team believes their current logging tool will not meet their needs for their new cloud-based product. They want a better tool to capture errors and help them analyze their historical log data. You want to help them find a solution that meets their needs.What should you do?",
@@ -69,7 +91,7 @@
                 question: "You write a Python script to connect to Google BigQuery from a Google Compute Engine virtual machine. The script is printing errors that it cannot connect to BigQuery. What should you do to fix the script?",
                 options: ["A. Install the latest BigQuery API client library for Python", "B. Run your script on a new virtual machine with the BigQuery access scope enabled", "C. Create a new service account with BigQuery access and execute your script with that user", "D. Install the bq component for gcloud with the command gcloud components install bq."],
                 correct: ["C. Create a new service account with BigQuery access and execute your script with that user"],
-                explanation: "A - If client library was not installed, the python scripts won't run - since the question states the script reports cannot connect - the client library must have been installed. so it's B or C. B - https://cloud.google.com/bigquery/docs/authorization an access scope is how your client application retrieve access_token with access permission in OAuth when you want to access services via API call - in this case, it is possible that the python script use an API call instead of library, if this is true, then access scope is required. client library requires no access scope (as it does not go through OAuth) C - service account is Google Cloud's best practice, So prefer C."
+                explanation: ""
             },
             {
                 question: "Your customer is moving an existing corporate application to Google Cloud Platform from an on-premises data center. The business owners require minimal user disruption. There are strict security team requirements for storing passwords. What authentication strategy should they use?",
@@ -92,8 +114,8 @@
         
             {
                 question: "A production database virtual machine on Google Compute Engine has an ext4-formatted persistent disk for data files. The database is about to run out of storage space. How can you remediate the problem with the least amount of downtime?",
-                options: ["A. In the Cloud Platform Console, increase the size of the persistent disk and use the resize2fs command in Linux.", "B. Shut down the virtual machine, use the Cloud Platform Console to increase the persistent disk size, then restart the virtual machine", "C. In the Cloud Platform Console, increase the size of the persistent disk and verify the new space is ready to use with the fdisk command in Linux", "D. In the Cloud Platform Console, create a new persistent disk attached to the virtual machine, format and mount it, and configure the database service to move the files to the new disk", "E. In the Cloud Platform Console, create a snapshot of the persistent disk restore the snapshot to a new larger disk, unmount the old disk, mount the new disk and restart the database service"],
-                correct: ["A. In the Cloud Platform Console, increase the size of the persistent disk and use the resize2fs command in Linux."],
+                options: ["A. In the Cloud Platform Console, increase the size of the persistent disk and use the resize2fs command in Linux", "B. Shut down the virtual machine, use the Cloud Platform Console to increase the persistent disk size, then restart the virtual machine", "C. In the Cloud Platform Console, increase the size of the persistent disk and verify the new space is ready to use with the fdisk command in Linux", "D. In the Cloud Platform Console, create a new persistent disk attached to the virtual machine, format and mount it, and configure the database service to move the files to the new disk", "E. In the Cloud Platform Console, create a snapshot of the persistent disk restore the snapshot to a new larger disk, unmount the old disk, mount the new disk and restart the database service"],
+                correct: ["A. In the Cloud Platform Console, increase the size of the persistent disk and use the resize2fs command in Linux"],
                 explanation: "A is the correct answer because the question says with minimum downtime"
             },
             {
@@ -137,6 +159,13 @@
                 question: "21 Your company's user-feedback portal comprises a standard LAMP stack replicated across two zones. It is deployed in the us-central1 region and uses autoscaled managed instance groups on all layers, except the database. Currently, only a small group of select customers have access to the portal. The portal meets a 99,99% availability SLA under these conditions. However next quarter, your company will be making the portal available to all users, including unauthenticated users. You need to develop a resiliency testing strategy to ensure the system maintains the SLA once they introduce additional user load. What should you do?",
                 options: ["A. Capture existing users input, and replay captured user load until autoscale is triggered on all layers. At the same time, terminate all resources in one of the zones", "B. Create synthetic random user input, replay synthetic load until autoscale logic is triggered on at least one layer, and introduce ג€chaosג€ to the system by terminating random resources on both zones","C. Expose the new system to a larger group of users, and increase group size each day until autoscale logic is triggered on all layers. At the same time, terminate random resources on both zones", "D. Capture existing users input, and replay captured user load until resource utilization crosses 80%. Also, derive estimated number of users based on existing user's usage of the app, and deploy enough resources to handle 200% of expected load"],
                 correct: ["B. Create synthetic random user input, replay synthetic load until autoscale logic is triggered on at least one layer, and introduce ג€chaosג€ to the system by terminating random resources on both zones"],
+                explanation: ""
+            },
+            {
+                question: "One of the developers on your team deployed their application in Google Container Engine with the Dockerfile below. They report that their application deployments are taking too long. You want to optimize this Dockerfile for faster deployment times without adversely affecting the app's functionality. Which two actions should you take? (Choose two.)",
+                image: "images/pregunta22.png",
+                options: ["A. Remove Python after running pip", "B. Remove dependencies from requirements.txt", "C. Use a slimmed-down base image like Alpine Linux", "D. Use larger machine types for your Google Container Engine node pools", "E. Copy the source after the package dependencies (Python and pip) are installed "],
+                correct: ["C. Use a slimmed-down base image like Alpine Linux", "E. Copy the source after the package dependencies (Python and pip) are installed "],
                 explanation: ""
             },
             {
@@ -232,6 +261,13 @@
                 correct: ["C. A single Organization with Folders for each department"],
                 explanation: ""
             },
+            {
+                question: "You deploy your custom Java application to Google App Engine. It fails to deploy and gives you the following stack trace. What should you do?",
+                image: "images/pregunta38.png",
+                options: ["A. Upload missing JAR files and redeploy your application.", "B. Digitally sign all of your JAR files and redeploy your application ", "C. Recompile the CLoakedServlet class using and MD5 hash instead of SHA1"],
+                correct: ["B. Digitally sign all of your JAR files and redeploy your application "],
+                explanation: ""
+            },
         
             {
                 question: "39 You are designing a mobile chat application. You want to ensure people cannot spoof chat messages, by providing a message were sent by a specific user.What should you do?",
@@ -310,7 +346,7 @@
             // Agrega más preguntas aquí si es necesario
         ];
 
-        const chunkSize = 10S; // Número de preguntas por pantalla
+        const chunkSize = 10; // Número de preguntas por pantalla
         let currentChunk = 0;
         let score = 0;
         let userAnswers = []; // Almacena las respuestas del usuario (array de arrays)
@@ -338,9 +374,11 @@
                 const questionDiv = document.createElement('div');
                 questionDiv.className = 'border border-gray-300 rounded-lg p-4 bg-gray-50 shadow-sm';
                 questionDiv.innerHTML = `
-                    <h2 class="text-xl font-semibold text-gray-800 mb-3">Pregunta ${questionIndex + 1}: ${q.question}</h2>
-                    <div class="space-y-2 ml-4">
-                `;
+    <h2 class="text-xl font-semibold text-gray-800 mb-3">Pregunta ${questionIndex + 1}: ${q.question}</h2>
+    ${q.image ? `<img src="${q.image}" alt="Diagrama pregunta ${questionIndex + 1}" 
+        class="my-3 rounded-lg border border-gray-200 max-w-full max-h-80 object-contain">` : ''}
+    <div class="space-y-2 ml-4">
+`;
 
                 const optionsContainer = document.createElement('div');
                 optionsContainer.className = 'space-y-2';
@@ -433,6 +471,8 @@
                 resultHTML += `
                     <li class="p-4 bg-gray-50 rounded-lg border ${isCorrect ? 'border-green-300' : 'border-red-300'}">
                         <p class="text-lg font-semibold text-gray-800">Pregunta ${index + 1}: ${q.question}</p>
+${q.image ? `<img src="${q.image}" alt="Diagrama" class="my-2 rounded-lg border border-gray-200 max-w-full max-h-60 object-contain">` : ''}
+
                         <p class="text-gray-600">Tus respuestas: ${userAnswers[index]?.join(", ") || "Ninguna seleccionada"}</p>
                         <p class="text-gray-600">Respuestas correctas: ${q.correct.join(", ")}</p>
                         <p class="text-${isCorrect ? 'green' : 'red'}-600 font-medium">${isCorrect ? 'Correcto' : 'Incorrecto'}</p>
